@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Python script to check what books are on offer for packt today. It sends the
-link to download if it meets criteria.
+Python script to check what books are on offer for Packt today. It sends a
+link to download it if it meets our criteria.
 """
 import logging
 import smtplib
@@ -31,12 +31,15 @@ class Packtpull:
         self.recipient = envar.RECIPIENT
 
     def check_title(self):
+        """Fetch the title of today's free eBook."""
         session = HTMLSession()
         resp = session.get(self.url)
         title = resp.html.find("#title-bar-title", first=True)
         return title.text
 
     def worth_keeping(self):
+        """Check if the eBook title is a match for our interests. If so,
+        send a email to recipient."""
         title = self.check_title()
         words = [x.lower() for x in title.split()]
         logging.info(f" {title} Currently Available.")
@@ -45,6 +48,7 @@ class Packtpull:
                 self.send_email(title)
 
     def send_email(self, title):
+        """Send email with title of book and link to it."""
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.set_debuglevel(1)
         server.starttls()
@@ -65,6 +69,7 @@ class Packtpull:
         server.quit()
 
     def run(self):
+        """Run the methods."""
         return self.worth_keeping()
 
 
