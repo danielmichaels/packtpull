@@ -19,7 +19,7 @@ the cause of errors when executed from the terminal.
 
 This scripts uses the following convention to hide secrets:
 
-Directory/module == `secrets/envar.py`
+Directory/module == `secret/envar.py`
 
 Within `envar.py` the following is searched for:
 

@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 
 from requests_html import HTMLSession
 
-from env import envar
+from secret import envar
 
 logging.basicConfig(level=logging.DEBUG)
 
