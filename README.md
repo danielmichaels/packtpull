@@ -19,9 +19,10 @@ the cause of errors when executed from the terminal.
 
 This scripts uses the following convention to hide secrets:
 
-Directory/module == `env/envar.py`
+Directory/module == `secrets/envar.py`
 
 Within `envar.py` the following is searched for:
+
 ```shell
 EMAIL_USERNAME='email address to send from'
 EMAIL_PASSWORD='cheese and whiskers'
